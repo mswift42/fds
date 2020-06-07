@@ -22,6 +22,7 @@ class CountDownGame {
     if (result < 0 || result == 1) {
       return score;
     }
-    return result;
+    score = result;
+    return score;
   }
 }
