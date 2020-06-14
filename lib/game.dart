@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Player {
   String name;
 
@@ -12,17 +14,18 @@ class Game {
   String title;
 }
 
-class CountDownGame {
+class CountDownGame with ChangeNotifier {
   int score;
 
   CountDownGame(this.score);
 
-  int scoreThrow(int points) {
+  void scoreThrow(int points) {
     var result = score - points;
     if (result < 0 || result == 1) {
-      return score;
+      notifyListeners();
+    } else {
+      score = result;
+      notifyListeners();
     }
-    score = result;
-    return score;
   }
 }
